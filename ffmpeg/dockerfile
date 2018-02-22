@@ -1,0 +1,15 @@
+FROM ubuntu:14.04
+MAINTAINER pyclas@yandex.ru
+
+RUN apt-get update && apt-get install -y \
+      wget \
+      xz-utils \
+      vim 
+
+WORKDIR /
+
+RUN wget http://johnvansickle.com/ffmpeg/releases/ffmpeg-release-64bit-static.tar.xz \
+      && tar Jxvf ./ffmpeg-release-64bit-static.tar.xz \
+      && cp ./ffmpeg*64bit-static/ffmpeg /usr/local/bin/
+
+CMD /bin/bash
